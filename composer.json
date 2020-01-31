@@ -1,0 +1,37 @@
+{
+  "name": "tarasmatskovich/house-application",
+  "version": "0.0.1",
+  "description": "Light PHP framework",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "license": "proprietary",
+  "keywords": [
+    "php",
+    "http",
+    "wamp",
+    "rest",
+    "framework"
+  ],
+  "authors": [
+    {
+      "name": "matskovich.taras<Мацькович Тарас>",
+      "email": "matskovich.taras@gmail.com"
+    }
+  ],
+  "require": {
+    "tarasmatskovich/house-framework": "dev-skeleton",
+    "tarasmatskovich/house-orm": "^1.0",
+    "vlucas/phpdotenv": "^4.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "houseapp\\": ""
+    }
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/tarasMatskovich/house-framework.git"
+    }
+  ]
+}
