@@ -21,6 +21,7 @@ return [
         'password' => getenv('DB_PASS')
     ],
     'auth' => [
+        'use' => true,
         'secret' => 'uidt67dgwawdgyquwdvf'
     ]
 ];

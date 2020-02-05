@@ -10,6 +10,7 @@ namespace houseapp\bootstrap\scripts;
 
 
 use houseapp\app\request\middlewares\auth\AuthenticationMiddleware;
+use houseapp\app\services\AuthenticationService\AuthenticationServiceInterface;
 use housedi\ContainerInterface;
 use houseframework\app\config\ConfigInterface;
 use houseframework\app\request\pipeline\builder\PipelineBuilder;
@@ -36,9 +37,9 @@ class PipelineBootstrapScript implements BootstrapScriptInterface
          * @var ConfigInterface $config
          */
         $config = $container->get('application.config');
-        if ($config->get('auth')) {
+        if ($config->get('auth:use')) {
             $authMiddleware = new AuthenticationMiddleware(
-                $container->get('application.entityManager')->getMapper('User')
+                $container->get(AuthenticationServiceInterface::class)
             );
             $container->set(AuthenticationMiddleware::class, $authMiddleware);
             $globalMiddlewares[] = AuthenticationMiddleware::class;
