@@ -9,7 +9,9 @@
 namespace houseapp\bootstrap\scripts;
 
 
+use houseapp\app\request\middlewares\auth\AuthenticationMiddleware;
 use housedi\ContainerInterface;
+use houseframework\app\config\ConfigInterface;
 use houseframework\app\request\pipeline\builder\PipelineBuilder;
 use houseframework\app\request\pipeline\builder\PipelineBuilderInterface;
 
@@ -27,27 +29,21 @@ class PipelineBootstrapScript implements BootstrapScriptInterface
      */
     public function boot(ContainerInterface $container)
     {
+        $globalMiddlewares = [];
         $middlewares = [];
-
-//        $middleware = new AuthenticationMiddleware(
-//            $container->get('application.entityManager')->getRepository(User::class),
-//            $container->get(AuthenticationServiceInterface::class)
-//        );
-//        $container->set(
-//            'application.middleware.authentication',
-//            $middleware
-//        );
-//        $middlewares[] = $middleware;
-//        $skippedActions = [
-//            'action.user.signup' => [
-//                AuthenticationMiddleware::class
-//            ],
-//            'action.user.signin' => [
-//                AuthenticationMiddleware::class
-//            ]
-//        ];
-
-        $pipelineBuilder = new PipelineBuilder($middlewares, []);
+        $skippedActions = [];
+        /**
+         * @var ConfigInterface $config
+         */
+        $config = $container->get('application.config');
+        if ($config->get('auth')) {
+            $authMiddleware = new AuthenticationMiddleware();
+            $container->set(AuthenticationMiddleware::class, $authMiddleware);
+            $globalMiddlewares[] = [
+              AuthenticationMiddleware::class
+            ];
+        }
+        $pipelineBuilder = new PipelineBuilder($container, $globalMiddlewares, $middlewares, $skippedActions);
         $container->set(PipelineBuilderInterface::class, $pipelineBuilder);
     }
 }

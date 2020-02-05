@@ -10,6 +10,8 @@ namespace houseapp\bootstrap\bootstrapper;
 
 
 use houseapp\bootstrap\scripts\ActionsBootstrapScripts;
+use houseapp\bootstrap\scripts\EntityManagerBootstrapScript;
+use houseapp\bootstrap\scripts\ListenersBootstrapScript;
 use houseapp\bootstrap\scripts\PipelineBootstrapScript;
 use houseapp\bootstrap\scripts\ServicesBootstrapScript;
 
@@ -24,8 +26,10 @@ class Bootstrapper implements BootstrapperInterface
      * @var array
      */
     private $bootstrapList = [
+        EntityManagerBootstrapScript::class,
         ServicesBootstrapScript::class,
         ActionsBootstrapScripts::class,
+        ListenersBootstrapScript::class,
         PipelineBootstrapScript::class
     ];
 

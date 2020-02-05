@@ -11,6 +11,7 @@ $env->load();
 
 $routes = require ROOT_DIRECTORY . '/config/routes.php';
 $httpRoutes = require  ROOT_DIRECTORY . '/config/http_routes.php';
+$channels = require ROOT_DIRECTORY . '/config/channels.php';
 $routerFactory = new \houseframework\app\router\factory\RouterFactory($routes, $httpRoutes);
 
 
@@ -21,3 +22,8 @@ $bootstrapper = new \houseapp\bootstrap\bootstrapper\Bootstrapper();
 $configParams = require  ROOT_DIRECTORY . '/config/config.php';
 $config = new \houseframework\app\config\Config($configParams);
 $container->set('application.config', $config);
+
+$container->set(
+    \houseframework\app\eventlistener\EventListenerInterface::class,
+    new \houseframework\app\eventlistener\EventListener($channels)
+);

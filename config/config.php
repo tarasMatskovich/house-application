@@ -14,11 +14,10 @@ return [
         ]
     ],
     'database' => [
-        'db_name' => getenv('DB_NAME'),
-        'login' => getenv('DB_LOGIN'),
-        'password' => getenv('DB_PASS'),
-        'host' => getenv('DB_HOST'),
-        'port' => getenv('DB_PORT'),
-        'driver' => getenv('DB_DRIVER')
+        'driver' => getenv('DB_DRIVER'),
+        'host'=> getenv('DB_HOST'),
+        'database' => getenv('DB_NAME'),
+        'user' => getenv('DB_LOGIN'),
+        'password' => getenv('DB_PASS')
     ],
 ];
