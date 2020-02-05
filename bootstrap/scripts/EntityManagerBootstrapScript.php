@@ -9,6 +9,8 @@
 namespace houseapp\bootstrap\scripts;
 
 
+use houseapp\app\entities\User\User;
+use houseapp\app\repositories\UserRepository\UserRepository;
 use housedi\ContainerInterface;
 use houseorm\Cache\Config\CacheConfig;
 use houseorm\config\Config;
@@ -26,7 +28,9 @@ class EntityManagerBootstrapScript implements BootstrapScriptInterface
     /**
      * @param ContainerInterface $container
      * @return void
+     * @throws \Doctrine\Common\Annotations\AnnotationException
      * @throws \houseorm\config\ConfigException
+     * @throws \houseorm\mapper\DomainMapperException
      */
     public function boot(ContainerInterface $container)
     {
@@ -40,6 +44,11 @@ class EntityManagerBootstrapScript implements BootstrapScriptInterface
             $entityManagerConfig->setCacheConfig(new CacheConfig($cache));
         }
         $entityManager = new EntityManager($entityManagerConfig);
+        $entityManager->setMapper(
+            'User',
+            new UserRepository(User::class)
+            );
+        // Add your repositories here
         $container->set('application.entityManager', $entityManager);
     }
 }

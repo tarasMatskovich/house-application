@@ -10,4 +10,10 @@ return [
     'test' => [
         'GET' => 'test'
     ],
+    'auth/signin' => [
+        'POST' => 'auth.signin'
+    ],
+    'auth/signup' => [
+        'POST' => 'auth.signup'
+    ]
 ];

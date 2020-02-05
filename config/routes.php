@@ -7,5 +7,7 @@
  */
 
 return [
-    'test' => 'action.test'
+    'test' => 'action.test',
+    'auth.signin' => 'action.auth.signin',
+    'auth.signup' => 'action.auth.signup'
 ];

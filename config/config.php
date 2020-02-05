@@ -20,4 +20,7 @@ return [
         'user' => getenv('DB_LOGIN'),
         'password' => getenv('DB_PASS')
     ],
+    'auth' => [
+        'secret' => 'uidt67dgwawdgyquwdvf'
+    ]
 ];

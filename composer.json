@@ -19,6 +19,7 @@
     }
   ],
   "require": {
+    "ext-json": "*",
     "tarasmatskovich/house-framework": "dev-skeleton",
     "tarasmatskovich/house-orm": "^1.0",
     "vlucas/phpdotenv": "^4.1"

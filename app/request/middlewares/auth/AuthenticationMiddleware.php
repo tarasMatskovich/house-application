@@ -9,6 +9,7 @@
 namespace houseapp\app\request\middlewares\auth;
 
 
+use houseapp\app\repositories\UserRepository\UserRepositoryInterface;
 use houseframework\app\request\middleware\MiddlewareInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -19,8 +20,28 @@ use Psr\Http\Message\ServerRequestInterface;
 class AuthenticationMiddleware implements MiddlewareInterface
 {
 
+    /**
+     * @var UserRepositoryInterface
+     */
+    private $userRepository;
+
+    /**
+     * AuthenticationMiddleware constructor.
+     * @param UserRepositoryInterface $userRepository
+     */
+    public function __construct(
+        UserRepositoryInterface $userRepository
+    )
+    {
+        $this->userRepository = $userRepository;
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     * @return ServerRequestInterface
+     */
     public function __invoke(ServerRequestInterface $request)
     {
-        // TODO: Implement __invoke() method.
+        return $request;
     }
 }

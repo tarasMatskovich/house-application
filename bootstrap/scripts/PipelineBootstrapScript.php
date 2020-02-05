@@ -37,11 +37,11 @@ class PipelineBootstrapScript implements BootstrapScriptInterface
          */
         $config = $container->get('application.config');
         if ($config->get('auth')) {
-            $authMiddleware = new AuthenticationMiddleware();
+            $authMiddleware = new AuthenticationMiddleware(
+                $container->get('application.entityManager')->getMapper('User')
+            );
             $container->set(AuthenticationMiddleware::class, $authMiddleware);
-            $globalMiddlewares[] = [
-              AuthenticationMiddleware::class
-            ];
+            $globalMiddlewares[] = AuthenticationMiddleware::class;
         }
         $pipelineBuilder = new PipelineBuilder($container, $globalMiddlewares, $middlewares, $skippedActions);
         $container->set(PipelineBuilderInterface::class, $pipelineBuilder);
