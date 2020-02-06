@@ -10,10 +10,10 @@ namespace houseapp\actions\auth\signin;
 
 
 use houseapp\app\repositories\UserRepository\UserRepositoryInterface;
+use houseapp\app\request\validation\auth\signin\SignInRequest;
 use houseapp\app\responders\UserResponder\UserResponderInterface;
 use houseapp\app\services\AuthenticationService\AuthenticationServiceInterface;
 use houseframework\action\ActionInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 
 /**
@@ -56,11 +56,11 @@ class SignIn implements ActionInterface
     }
 
     /**
-     * @param ServerRequestInterface $request
+     * @param SignInRequest $request
      * @return array
      * @throws \Exception
      */
-    public function __invoke(ServerRequestInterface $request)
+    public function __invoke(SignInRequest $request)
     {
         $email = $request->getAttribute('email');
         $password = $request->getAttribute('password');

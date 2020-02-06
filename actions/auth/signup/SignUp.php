@@ -11,10 +11,10 @@ namespace houseapp\actions\auth\signup;
 
 use houseapp\app\factories\UserFactory\UserFactoryInterface;
 use houseapp\app\repositories\UserRepository\UserRepositoryInterface;
+use houseapp\app\request\validation\auth\signup\SignUpRequest;
 use houseapp\app\responders\UserResponder\UserResponderInterface;
 use houseapp\app\services\AuthenticationService\AuthenticationServiceInterface;
 use houseframework\action\ActionInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class SignUp
@@ -65,11 +65,11 @@ class SignUp implements ActionInterface
 
 
     /**
-     * @param ServerRequestInterface $request
+     * @param SignUpRequest $request
      * @return array
      * @throws \Exception
      */
-    public function __invoke(ServerRequestInterface $request)
+    public function __invoke(SignUpRequest $request)
     {
         $user = $this->userFactory->makeUserFromSignUpRequest($request);
         $existingUser = $this->userRepository->findOneBy(['email' => $user->getEmail()]);

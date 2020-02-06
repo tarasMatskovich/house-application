@@ -45,7 +45,7 @@ class AuthenticationMiddleware implements MiddlewareInterface
     {
         $token = $request->getAttribute('token');
         if (!$token) {
-            throw new AuthenticationException("Parameter `_token` is missing in request");
+            throw new AuthenticationException("Parameter `token` is missing in request");
         }
         if (!$this->authenticationService->checkToken($token)) {
             throw new AuthenticationException("Authentication token is wrong");

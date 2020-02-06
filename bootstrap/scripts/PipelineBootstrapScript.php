@@ -32,7 +32,10 @@ class PipelineBootstrapScript implements BootstrapScriptInterface
     {
         $globalMiddlewares = [];
         $middlewares = [];
-        $skippedActions = [];
+        $skippedActions = [
+            'action.auth.signin' => [AuthenticationMiddleware::class],
+            'action.auth.signup' => [AuthenticationMiddleware::class]
+        ];
         /**
          * @var ConfigInterface $config
          */
