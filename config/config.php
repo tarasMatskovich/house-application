@@ -24,7 +24,8 @@ return [
         'use' => true,
         'defaultAuthenticator' => 'jwt',
         'jwt' => [
-            'secret' => 'uidt67dgwawdgyquwdvf'
+            'secret' => 'uidt67dgwawdgyquwdvf',
+            'lifetime' => 60 * 60 * 24
         ]
     ]
 ];

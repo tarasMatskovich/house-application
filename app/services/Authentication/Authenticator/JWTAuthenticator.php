@@ -38,17 +38,28 @@ class JWTAuthenticator implements AuthenticatorInterface
     private $secret;
 
     /**
+     * @var int
+     * default - 24h
+     */
+    private $jwtLifeTime = 60 * 60 * 24;
+
+    /**
      * JWTAuthenticator constructor.
      * @param UserRepositoryInterface $userRepository
      * @param string $secret
+     * @param float|int|null $lifetime
      */
     public function __construct(
         UserRepositoryInterface $userRepository,
-        string $secret
+        string $secret,
+        $lifetime = null
     )
     {
         $this->userRepository = $userRepository;
         $this->secret = $secret;
+        if ($this->jwtLifeTime) {
+            $this->jwtLifeTime = $lifetime;
+        }
     }
 
     /**
@@ -139,7 +150,7 @@ class JWTAuthenticator implements AuthenticatorInterface
     {
         $data = new \DateTime();
         $currentTimeStamp = $data->getTimestamp();
-        $expiredTimeStamp = $currentTimeStamp + 30000;
+        $expiredTimeStamp = $currentTimeStamp + $this->jwtLifeTime;
         return [
             'iss' => 'auth.securemessenger.com.ua',
             'aud' => 'securemessenger.com.ua',

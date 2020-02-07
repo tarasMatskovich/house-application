@@ -35,7 +35,8 @@ return [
         'application.authenticator.jwt' => function (ContainerInterface $container) {
             return new JWTAuthenticator(
                 $container->get('application.entityManager')->getMapper('User'),
-                $container->get('application.config')->get('auth:jwt:secret')
+                $container->get('application.config')->get('auth:jwt:secret'),
+                $container->get('application.config')->get('auth:jwt:lifetime')
             );
         },
         AuthenticatorFactoryInterface::class => function (ContainerInterface $container) {
