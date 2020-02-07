@@ -14,7 +14,8 @@ use houseapp\actions\auth\signup\SignUp;
 use houseapp\actions\test\Test;
 use houseapp\app\factories\UserFactory\UserFactoryInterface;
 use houseapp\app\responders\UserResponder\UserResponderInterface;
-use houseapp\app\services\AuthenticationService\AuthenticationServiceInterface;
+use houseapp\app\services\Authentication\Authenticator\Factory\AuthenticatorFactoryInterface;
+use houseapp\app\services\UserPasswordService\UserPasswordServiceInterface;
 use housedi\ContainerInterface;
 
 
@@ -34,17 +35,23 @@ class ActionsBootstrapScripts implements BootstrapScriptInterface
         $container->set('action.test', Test::class);
         if ($container->get('application.config')->get('auth:use')) {
             $container->set('action.auth.signin', function (ContainerInterface $container) {
+                /**
+                 * @var AuthenticatorFactoryInterface $authenticatorFactory
+                 */
+                $authenticatorFactory = $container->get(AuthenticatorFactoryInterface::class);
                 return new SignIn(
                     $container->get('application.entityManager')->getMapper('User'),
-                    $container->get(AuthenticationServiceInterface::class),
-                    $container->get(UserResponderInterface::class)
+                    $container->get(UserResponderInterface::class),
+                    $container->get(UserPasswordServiceInterface::class),
+                    $authenticatorFactory->makeAuthenticator(
+                        $container->get('application.config')->get('auth.defaultAuthenticator')
+                    )
                 );
             });
             $container->set('action.auth.signup', function (ContainerInterface $container) {
                 return new SignUp(
                     $container->get(UserFactoryInterface::class),
                     $container->get('application.entityManager')->getMapper('User'),
-                    $container->get(AuthenticationServiceInterface::class),
                     $container->get(UserResponderInterface::class)
                 );
             });

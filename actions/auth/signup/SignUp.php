@@ -13,7 +13,6 @@ use houseapp\app\factories\UserFactory\UserFactoryInterface;
 use houseapp\app\repositories\UserRepository\UserRepositoryInterface;
 use houseapp\app\request\validation\auth\signup\SignUpRequest;
 use houseapp\app\responders\UserResponder\UserResponderInterface;
-use houseapp\app\services\AuthenticationService\AuthenticationServiceInterface;
 use houseframework\action\ActionInterface;
 
 /**
@@ -34,11 +33,6 @@ class SignUp implements ActionInterface
     private $userRepository;
 
     /**
-     * @var AuthenticationServiceInterface
-     */
-    private $authenticationService;
-
-    /**
      * @var UserResponderInterface
      */
     private $userResponder;
@@ -47,19 +41,16 @@ class SignUp implements ActionInterface
      * SignUp constructor.
      * @param UserFactoryInterface $userFactory
      * @param UserRepositoryInterface $userRepository
-     * @param AuthenticationServiceInterface $authenticationService
      * @param UserResponderInterface $userResponder
      */
     public function __construct(
         UserFactoryInterface $userFactory,
         UserRepositoryInterface $userRepository,
-        AuthenticationServiceInterface $authenticationService,
         UserResponderInterface $userResponder
     )
     {
         $this->userFactory = $userFactory;
         $this->userRepository = $userRepository;
-        $this->authenticationService = $authenticationService;
         $this->userResponder = $userResponder;
     }
 

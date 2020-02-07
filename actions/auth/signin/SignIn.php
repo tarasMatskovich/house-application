@@ -12,7 +12,8 @@ namespace houseapp\actions\auth\signin;
 use houseapp\app\repositories\UserRepository\UserRepositoryInterface;
 use houseapp\app\request\validation\auth\signin\SignInRequest;
 use houseapp\app\responders\UserResponder\UserResponderInterface;
-use houseapp\app\services\AuthenticationService\AuthenticationServiceInterface;
+use houseapp\app\services\Authentication\Authenticator\AuthenticatorInterface;
+use houseapp\app\services\UserPasswordService\UserPasswordServiceInterface;
 use houseframework\action\ActionInterface;
 
 
@@ -29,30 +30,38 @@ class SignIn implements ActionInterface
     private $userRepository;
 
     /**
-     * @var AuthenticationServiceInterface
-     */
-    private $authenticationService;
-
-    /**
      * @var UserResponderInterface
      */
     private $userResponder;
 
     /**
+     * @var UserPasswordServiceInterface
+     */
+    private $userPasswordService;
+
+    /**
+     * @var AuthenticatorInterface
+     */
+    private $authenticator;
+
+    /**
      * SignIn constructor.
      * @param UserRepositoryInterface $userRepository
-     * @param AuthenticationServiceInterface $authenticationService
      * @param UserResponderInterface $userResponder
+     * @param UserPasswordServiceInterface $userPasswordService
+     * @param AuthenticatorInterface $authenticator
      */
     public function __construct(
         UserRepositoryInterface $userRepository,
-        AuthenticationServiceInterface $authenticationService,
-        UserResponderInterface $userResponder
+        UserResponderInterface $userResponder,
+        UserPasswordServiceInterface $userPasswordService,
+        AuthenticatorInterface $authenticator
     )
     {
         $this->userRepository = $userRepository;
-        $this->authenticationService = $authenticationService;
         $this->userResponder = $userResponder;
+        $this->userPasswordService = $userPasswordService;
+        $this->authenticator = $authenticator;
     }
 
     /**
@@ -68,12 +77,12 @@ class SignIn implements ActionInterface
         if (!$user) {
             throw new \Exception('No existing user with such email', 403);
         }
-        if (!$this->authenticationService->verifyUser($user, $password)) {
+        if (!$this->userPasswordService->checkPassword($user, $password)) {
             throw new \Exception('Wrong password');
         }
         return [
             'user' => $this->userResponder->respond($user),
-            'token' => $this->authenticationService->createToken($user)
+            'token' => $this->authenticator->getAuthPayload($user)->getMainData()
         ];
     }
 }

@@ -22,6 +22,9 @@ return [
     ],
     'auth' => [
         'use' => true,
-        'secret' => 'uidt67dgwawdgyquwdvf'
+        'defaultAuthenticator' => 'jwt',
+        'jwt' => [
+            'secret' => 'uidt67dgwawdgyquwdvf'
+        ]
     ]
 ];

@@ -9,31 +9,28 @@
 namespace houseapp\app\request\middlewares\auth;
 
 
-use houseapp\app\services\AuthenticationService\AuthenticationServiceInterface;
-use houseframework\app\request\middleware\MiddlewareInterface;
+use houseapp\app\services\Authentication\Authenticator\AuthenticatorInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class AuthenticationMiddleware
  * @package houseapp\app\request\middlewares\auth
  */
-class AuthenticationMiddleware implements MiddlewareInterface
+class JWTAuthenticationMiddleware implements AuthenticationMiddlewareInterface
 {
 
     /**
-     * @var AuthenticationServiceInterface
+     * @var AuthenticatorInterface
      */
-    private $authenticationService;
+    private $authenticator;
 
     /**
      * AuthenticationMiddleware constructor.
-     * @param AuthenticationServiceInterface $authenticationService
+     * @param AuthenticatorInterface $authenticator
      */
-    public function __construct(
-        AuthenticationServiceInterface $authenticationService
-    )
+    public function __construct(AuthenticatorInterface $authenticator)
     {
-        $this->authenticationService = $authenticationService;
+        $this->authenticator = $authenticator;
     }
 
     /**
@@ -47,7 +44,7 @@ class AuthenticationMiddleware implements MiddlewareInterface
         if (!$token) {
             throw new AuthenticationException("Parameter `token` is missing in request");
         }
-        if (!$this->authenticationService->checkToken($token)) {
+        if (!$this->authenticator->auth($request)) {
             throw new AuthenticationException("Authentication token is wrong");
         }
         return $request;

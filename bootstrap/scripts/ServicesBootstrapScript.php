@@ -9,8 +9,6 @@
 namespace houseapp\bootstrap\scripts;
 
 
-use houseapp\app\services\TestService\TestService;
-use houseapp\app\services\TestService\TestServiceInterface;
 use housedi\ContainerInterface;
 
 
@@ -27,6 +25,6 @@ class ServicesBootstrapScript implements BootstrapScriptInterface
      */
     public function boot(ContainerInterface $container)
     {
-        $container->set(TestServiceInterface::class, TestService::class);
+        // REGISTER YOUR SERVICES IN CONTAINER HERE
     }
 }

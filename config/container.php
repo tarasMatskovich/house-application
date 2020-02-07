@@ -12,10 +12,9 @@ use houseapp\app\factories\UserFactory\UserFactory;
 use houseapp\app\factories\UserFactory\UserFactoryInterface;
 use houseapp\app\responders\UserResponder\UserResponder;
 use houseapp\app\responders\UserResponder\UserResponderInterface;
-use houseapp\app\services\AuthenticationService\AuthenticationService;
-use houseapp\app\services\AuthenticationService\AuthenticationServiceInterface;
-use houseapp\app\services\JWTService\JWTService;
-use houseapp\app\services\JWTService\JWTServiceInterface;
+use houseapp\app\services\Authentication\Authenticator\Factory\AuthenticatorFactory;
+use houseapp\app\services\Authentication\Authenticator\Factory\AuthenticatorFactoryInterface;
+use houseapp\app\services\Authentication\Authenticator\JWTAuthenticator;
 use houseapp\app\services\UserPasswordService\UserPasswordService;
 use houseapp\app\services\UserPasswordService\UserPasswordServiceInterface;
 use housedi\ContainerInterface;
@@ -32,17 +31,18 @@ return [
             );
         },
         UserPasswordServiceInterface::class => UserPasswordService::class,
-        JWTServiceInterface::class => function (ContainerInterface $container) {
-            return new JWTService($container->get('application.config')->get('auth:secret'));
-        },
-        AuthenticationServiceInterface::class => function (ContainerInterface $container) {
-            return new AuthenticationService(
+        UserResponderInterface::class => UserResponder::class,
+        'application.authenticator.jwt' => function (ContainerInterface $container) {
+            return new JWTAuthenticator(
                 $container->get('application.entityManager')->getMapper('User'),
-                $container->get(UserPasswordServiceInterface::class),
-                $container->get(JWTServiceInterface::class)
+                $container->get('application.config')->get('auth:jwt:secret')
             );
         },
-        UserResponderInterface::class => UserResponder::class
+        AuthenticatorFactoryInterface::class => function (ContainerInterface $container) {
+            return new AuthenticatorFactory(
+                $container->get('application.authenticator.jwt')
+            );
+        },
     ],
     'singletons' => [
 

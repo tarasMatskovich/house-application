@@ -2,25 +2,30 @@
 /**
  * Created by PhpStorm.
  * User: t.matskovich
- * Date: 05.02.2020
- * Time: 13:46
+ * Date: 07.02.2020
+ * Time: 11:14
  */
 
-namespace houseapp\app\services\AuthenticationService;
+namespace houseapp\app\services\Authentication\Authenticator;
 
 
 use houseapp\app\entities\User\UserInterface;
 use houseapp\app\repositories\UserRepository\UserRepositoryInterface;
-use houseapp\app\services\JWTService\AlgorithmsEnum;
-use houseapp\app\services\JWTService\JWTServiceInterface;
-use houseapp\app\services\UserPasswordService\UserPasswordServiceInterface;
+use houseapp\app\services\Authentication\AuthenticationPayload\AuthenticationPayload;
+use houseapp\app\services\Authentication\AuthenticationPayload\AuthenticationPayloadInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
 
 /**
- * Class AuthenticationService
- * @package houseapp\app\services\AuthenticationService
+ * Class JWTAuthenticator
+ * @package houseapp\app\services\Authentication\Authenticator
  */
-class AuthenticationService implements AuthenticationServiceInterface
+class JWTAuthenticator implements AuthenticatorInterface
 {
+
+    const HS_256 = 'HS256';
+
+    const PHP_HS_256 = 'SHA256';
 
     /**
      * @var UserRepositoryInterface
@@ -28,42 +33,90 @@ class AuthenticationService implements AuthenticationServiceInterface
     private $userRepository;
 
     /**
-     * @var UserPasswordServiceInterface
+     * @var string
      */
-    private $userPasswordService;
+    private $secret;
 
     /**
-     * @var JWTServiceInterface
-     */
-    private $JWTService;
-
-    /**
-     * AuthenticationService constructor.
+     * JWTAuthenticator constructor.
      * @param UserRepositoryInterface $userRepository
-     * @param UserPasswordServiceInterface $userPasswordService
-     * @param JWTServiceInterface $JWTService
+     * @param string $secret
      */
     public function __construct(
         UserRepositoryInterface $userRepository,
-        UserPasswordServiceInterface $userPasswordService,
-        JWTServiceInterface $JWTService
+        string $secret
     )
     {
         $this->userRepository = $userRepository;
-        $this->userPasswordService = $userPasswordService;
-        $this->JWTService = $JWTService;
+        $this->secret = $secret;
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     * @return bool
+     * @throws \Exception
+     */
+    public function auth(ServerRequestInterface $request)
+    {
+        $token = $request->getAttribute('token');
+        if (!$token) {
+            return false;
+        }
+        return $this->checkToken($token);
     }
 
     /**
      * @param UserInterface $user
-     * @return string
+     * @return AuthenticationPayloadInterface
      * @throws \Exception
      */
-    public function createToken(UserInterface $user)
+    public function getAuthPayload(UserInterface $user)
     {
         $header = $this->makeHeader();
         $payload = $this->makePayload($user);
-        return $this->JWTService->encode($header, $payload);
+        $jwt = $this->encode($header, $payload);
+        return new AuthenticationPayload($jwt);
+    }
+
+    /**
+     * @param array $header
+     * @param array $payload
+     * @return string
+     */
+    private function encode(array $header, array $payload): string
+    {
+        $unsignedToken = $this->makeUnsignedToken($header, $payload);
+        $signature = $this->makeSignature($header, $unsignedToken);
+        return $unsignedToken . '.' . $signature;
+    }
+
+    /**
+     * @param array $header
+     * @param string $unsignedToken
+     * @return string
+     */
+    private function makeSignature(array $header, string $unsignedToken): string
+    {
+        $algorithm = $header['alg'] ?? '';
+        switch ($algorithm) {
+            case static::HS_256:
+                return hash_hmac(static::PHP_HS_256, $unsignedToken, $this->secret);
+            default:
+                return hash_hmac($algorithm, $unsignedToken, $this->secret);
+        }
+    }
+
+    /**
+     * @param array $header
+     * @param array $payload
+     * @return string
+     */
+    private function makeUnsignedToken(array $header, array $payload): string
+    {
+        $header = json_encode($header);
+        $payload = json_encode($payload);
+        $unsignedToken = base64_encode($header) . '.' . base64_encode($payload);
+        return $unsignedToken;
     }
 
     /**
@@ -72,7 +125,7 @@ class AuthenticationService implements AuthenticationServiceInterface
     private function makeHeader()
     {
         return [
-            'alg' => AlgorithmsEnum::HS_256,
+            'alg' => static::HS_256,
             'typ' => 'JWT'
         ];
     }
@@ -100,7 +153,7 @@ class AuthenticationService implements AuthenticationServiceInterface
      * @return bool
      * @throws \Exception
      */
-    public function checkToken(string $token)
+    private function checkToken(string $token)
     {
         if (!$this->isValidTokenStructure($token)) {
             return false;
@@ -137,8 +190,11 @@ class AuthenticationService implements AuthenticationServiceInterface
         $parts = $this->explodeToken($token);
         $header = json_decode(base64_decode($parts[0]), true);
         $payload = json_decode(base64_decode($parts[1]), true);
-        $sign = $parts[2];
-        $systemToken = $this->JWTService->encode($header, $payload);
+        $sign = $parts[2] ?? null;
+        if (!$header || !$payload || !$sign) {
+            return false;
+        }
+        $systemToken = $this->encode($header, $payload);
         $systemTokenSign = $this->explodeToken($systemToken)[2];
         return $sign === $systemTokenSign;
     }
@@ -170,15 +226,5 @@ class AuthenticationService implements AuthenticationServiceInterface
     private function explodeToken(string $token): array
     {
         return explode('.', $token);
-    }
-
-    /**
-     * @param UserInterface $user
-     * @param string $password
-     * @return bool
-     */
-    public function verifyUser(UserInterface $user, string $password): bool
-    {
-        return $this->userPasswordService->checkPassword($user, $password);
     }
 }
