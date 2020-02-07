@@ -13,6 +13,7 @@ define('ROOT_DIRECTORY', dirname(__FILE__));
 require './bootstrap/bootstrap.php';
 
 
+$container->set('application.type', \houseframework\app\factory\enum\ApplicationTypesEnum::APP_HTTP);
 $applicationLauncher = new \houseapp\app\launcher\ApplicationLauncher(
     $container,
     $routerFactory,

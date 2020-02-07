@@ -17,6 +17,7 @@ use houseapp\app\responders\UserResponder\UserResponderInterface;
 use houseapp\app\services\Authentication\Authenticator\Factory\AuthenticatorFactoryInterface;
 use houseapp\app\services\UserPasswordService\UserPasswordServiceInterface;
 use housedi\ContainerInterface;
+use houseframework\app\publisher\factory\PublisherFactoryInterface;
 
 
 /**
@@ -32,7 +33,11 @@ class ActionsBootstrapScripts implements BootstrapScriptInterface
      */
     public function boot(ContainerInterface $container)
     {
-        $container->set('action.test', Test::class);
+        $container->set('action.test', function (ContainerInterface $container) {
+            return new Test(
+                $container->get(PublisherFactoryInterface::class)->makePublisher($container->get('application.type'))
+            );
+        });
         if ($container->get('application.config')->get('auth:use')) {
             $container->set('action.auth.signin', function (ContainerInterface $container) {
                 /**

@@ -13,6 +13,7 @@ use houseapp\bootstrap\scripts\ActionsBootstrapScripts;
 use houseapp\bootstrap\scripts\EntityManagerBootstrapScript;
 use houseapp\bootstrap\scripts\ListenersBootstrapScript;
 use houseapp\bootstrap\scripts\PipelineBootstrapScript;
+use houseapp\bootstrap\scripts\PublisherBootstrapScript;
 use houseapp\bootstrap\scripts\ServicesBootstrapScript;
 
 /**
@@ -28,6 +29,7 @@ class Bootstrapper implements BootstrapperInterface
     private $bootstrapList = [
         EntityManagerBootstrapScript::class,
         ServicesBootstrapScript::class,
+        PublisherBootstrapScript::class,
         ActionsBootstrapScripts::class,
         ListenersBootstrapScript::class,
         PipelineBootstrapScript::class
