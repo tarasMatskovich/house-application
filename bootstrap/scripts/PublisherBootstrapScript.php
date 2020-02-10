@@ -12,7 +12,6 @@ namespace houseapp\bootstrap\scripts;
 use housedi\ContainerInterface;
 use houseframework\app\publisher\factory\PublisherFactory;
 use houseframework\app\publisher\factory\PublisherFactoryInterface;
-use houseframework\app\publisher\WampPublisher;
 
 
 /**
@@ -28,12 +27,9 @@ class PublisherBootstrapScript implements BootstrapScriptInterface
      */
     public function boot(ContainerInterface $container)
     {
-        $container->set(WampPublisher::class, function (ContainerInterface $container) {
-            return new WampPublisher($container->get('application.clientSession'));
-        });
         $container->set(PublisherFactoryInterface::class, function (ContainerInterface $container) {
             return new PublisherFactory(
-                $container->get(WampPublisher::class)
+                $container->get('application.config')
             );
         });
     }

@@ -8,7 +8,7 @@
 
 return [
     'test' => [
-        'GET' => 'test'
+        'POST' => 'test'
     ],
     'auth/signin' => [
         'POST' => 'auth.signin'

@@ -21,7 +21,7 @@ return [
         'password' => getenv('DB_PASS')
     ],
     'auth' => [
-        'use' => true,
+        'use' => false,
         'defaultAuthenticator' => 'jwt',
         'jwt' => [
             'secret' => 'uidt67dgwawdgyquwdvf',

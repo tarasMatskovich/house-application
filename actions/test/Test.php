@@ -10,8 +10,6 @@ namespace houseapp\actions\test;
 
 
 use houseframework\action\ActionInterface;
-use houseframework\app\publisher\message\PublisherMessage;
-use houseframework\app\publisher\PublisherInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 
@@ -23,38 +21,14 @@ class Test implements ActionInterface
 {
 
     /**
-     * @var PublisherInterface
-     */
-    private $publisher;
-
-    /**
-     * Test constructor.
-     * @param PublisherInterface $publisher
-     */
-    public function __construct(
-        PublisherInterface $publisher
-    )
-    {
-        $this->publisher = $publisher;
-    }
-
-    /**
      * @param ServerRequestInterface $request
      * @return array
      */
     public function __invoke(ServerRequestInterface $request)
     {
-        $this->publisher->publish(
-          new PublisherMessage(
-              'topic',
-              'type',
-              [
-                  'test' => 'value'
-              ]
-          )
-        );
+        $attr = $request->getAttribute('test');
         return [
-            'foo' => 'bar'
+            'foo' => $attr
         ];
     }
 }
