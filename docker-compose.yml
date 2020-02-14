@@ -1,0 +1,39 @@
+version: '3'
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - ./:/var/www/houseapplication
+    links:
+      - fpm
+    environment:
+      - TERM=xterm
+  fpm:
+    build: ./docker/fpm
+    volumes:
+      - ./:/var/www/houseapplication
+  housecrossbar:
+    image: crossbario/crossbar
+    volumes:
+      - ./docker/crossbar:/node
+    ports:
+      - 8080:8080
+  composer:
+    image: composer:1.6
+    volumes:
+      - ./:/usr/src/houseapplication
+    working_dir: /usr/src/houseapplication
+    command: composer install
+  housecli:
+    build: ./docker/cli
+    volumes:
+      - ./:/usr/src/houseapplication
+    depends_on:
+      - composer
+      - housecrossbar
+    links:
+      - housecrossbar

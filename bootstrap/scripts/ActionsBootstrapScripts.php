@@ -33,28 +33,26 @@ class ActionsBootstrapScripts implements BootstrapScriptInterface
     public function boot(ContainerInterface $container)
     {
         $container->set('action.test', Test::class);
-        if ($container->get('application.config')->get('auth:use')) {
-            $container->set('action.auth.signin', function (ContainerInterface $container) {
-                /**
-                 * @var AuthenticatorFactoryInterface $authenticatorFactory
-                 */
-                $authenticatorFactory = $container->get(AuthenticatorFactoryInterface::class);
-                return new SignIn(
-                    $container->get('application.entityManager')->getMapper('User'),
-                    $container->get(UserResponderInterface::class),
-                    $container->get(UserPasswordServiceInterface::class),
-                    $authenticatorFactory->makeAuthenticator(
-                        $container->get('application.config')->get('auth.defaultAuthenticator')
-                    )
-                );
-            });
-            $container->set('action.auth.signup', function (ContainerInterface $container) {
-                return new SignUp(
-                    $container->get(UserFactoryInterface::class),
-                    $container->get('application.entityManager')->getMapper('User'),
-                    $container->get(UserResponderInterface::class)
-                );
-            });
-        }
+        $container->set('action.auth.signin', function (ContainerInterface $container) {
+            /**
+             * @var AuthenticatorFactoryInterface $authenticatorFactory
+             */
+            $authenticatorFactory = $container->get(AuthenticatorFactoryInterface::class);
+            return new SignIn(
+                $container->get('application.entityManager')->getMapper('User'),
+                $container->get(UserResponderInterface::class),
+                $container->get(UserPasswordServiceInterface::class),
+                $authenticatorFactory->makeAuthenticator(
+                    $container->get('application.config')->get('auth.defaultAuthenticator')
+                )
+            );
+        });
+        $container->set('action.auth.signup', function (ContainerInterface $container) {
+            return new SignUp(
+                $container->get(UserFactoryInterface::class),
+                $container->get('application.entityManager')->getMapper('User'),
+                $container->get(UserResponderInterface::class)
+            );
+        });
     }
 }
