@@ -20,19 +20,13 @@
   ],
   "require": {
     "ext-json": "*",
-    "tarasmatskovich/house-framework": "dev-skeleton",
-    "tarasmatskovich/house-orm": "^1.0",
+    "tarasmatskovich/house-framework": "dev-master",
+    "tarasmatskovich/house-orm": "dev-master",
     "vlucas/phpdotenv": "^4.1"
   },
   "autoload": {
     "psr-4": {
       "houseapp\\": ""
     }
-  },
-  "repositories": [
-    {
-      "type": "git",
-      "url": "https://github.com/tarasMatskovich/house-framework.git"
-    }
-  ]
+  }
 }

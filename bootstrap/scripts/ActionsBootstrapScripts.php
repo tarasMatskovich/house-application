@@ -32,7 +32,9 @@ class ActionsBootstrapScripts implements BootstrapScriptInterface
      */
     public function boot(ContainerInterface $container)
     {
-        $container->set('action.test', Test::class);
+        $container->set('action.test', function (ContainerInterface $container) {
+            return new Test($container->get('application.publisher.wamp'));
+        });
         $container->set('action.auth.signin', function (ContainerInterface $container) {
             /**
              * @var AuthenticatorFactoryInterface $authenticatorFactory
