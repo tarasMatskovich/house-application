@@ -23,7 +23,8 @@ $configParams = require  ROOT_DIRECTORY . '/config/config.php';
 $config = new \houseframework\app\config\Config($configParams);
 $container->set('application.config', $config);
 
+$eventListener = new \houseframework\app\eventlistener\EventListener($channels);
 $container->set(
     \houseframework\app\eventlistener\EventListenerInterface::class,
-    new \houseframework\app\eventlistener\EventListener($channels)
+    $eventListener
 );
