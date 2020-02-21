@@ -4,4 +4,4 @@ RUN apt-get update && docker-php-ext-install pdo_mysql
 
 WORKDIR /usr/src/houseapplication
 
-ENTRYPOINT ["/usr/bin/env", "php", "gateway.php"]
+ENTRYPOINT php multiprocess.php

@@ -79,9 +79,10 @@ class ApplicationLauncher implements ApplicationLauncherInterface
     }
 
     /**
+     * @param array $options
      * @return void
      */
-    public function launch()
+    public function launch(array $options = [])
     {
         $applicationFactory = $this->createApplicationFactory();
         $app = $applicationFactory->make($this->buildKey);
