@@ -10,7 +10,7 @@ define('ROOT_DIRECTORY', dirname(__FILE__));
 require './bootstrap/bootstrap.php';
 
 $options = [
-    Options::MIN_SIZE => 1,
+    Options::MIN_SIZE => 0,
     Options::MAX_SIZE => 5,
     Options::TTL      => 20,
 ];
