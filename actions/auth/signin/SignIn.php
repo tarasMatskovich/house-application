@@ -6,20 +6,20 @@
  * Time: 13:18
  */
 
-namespace houseapp\actions\auth\signin;
+namespace actions\auth\signin;
 
 
-use houseapp\app\repositories\UserRepository\UserRepositoryInterface;
-use houseapp\app\request\validation\auth\signin\SignInRequest;
-use houseapp\app\responders\UserResponder\UserResponderInterface;
-use houseapp\app\services\Authentication\Authenticator\AuthenticatorInterface;
-use houseapp\app\services\UserPasswordService\UserPasswordServiceInterface;
+use app\repositories\UserRepository\UserRepositoryInterface;
+use app\request\validation\auth\signin\SignInRequest;
+use app\responders\UserResponder\UserResponderInterface;
+use app\services\Authentication\Authenticator\AuthenticatorInterface;
+use app\services\UserPasswordService\UserPasswordServiceInterface;
 use houseframework\action\ActionInterface;
 
 
 /**
  * Class SignIn
- * @package houseapp\actions\auth\signin
+ * @package actions\auth\signin
  */
 class SignIn implements ActionInterface
 {

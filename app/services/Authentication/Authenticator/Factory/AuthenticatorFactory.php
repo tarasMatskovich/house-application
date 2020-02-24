@@ -6,16 +6,16 @@
  * Time: 11:16
  */
 
-namespace houseapp\app\services\Authentication\Authenticator\Factory;
+namespace app\services\Authentication\Authenticator\Factory;
 
 
-use houseapp\app\services\Authentication\AuthenticationTypes;
-use houseapp\app\services\Authentication\Authenticator\AuthenticatorInterface;
+use app\services\Authentication\AuthenticationTypes;
+use app\services\Authentication\Authenticator\AuthenticatorInterface;
 
 
 /**
  * Class AuthenticatorFactory
- * @package houseapp\app\services\Authentication\Authenticator\Factory
+ * @package app\services\Authentication\Authenticator\Factory
  */
 class AuthenticatorFactory implements AuthenticatorFactoryInterface
 {

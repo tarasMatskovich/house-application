@@ -6,12 +6,12 @@
  * Time: 11:15
  */
 
-namespace houseapp\bootstrap\bootstrapper;
+namespace bootstrap\bootstrapper;
 
 
 /**
  * Interface BootstrapperInterface
- * @package houseapp\bootstrap\bootstrapper
+ * @package bootstrap\bootstrapper
  */
 interface BootstrapperInterface
 {

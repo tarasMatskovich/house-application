@@ -6,14 +6,14 @@
  * Time: 15:52
  */
 
-namespace houseapp\app\responders\UserResponder;
+namespace app\responders\UserResponder;
 
 
-use houseapp\app\entities\User\UserInterface;
+use app\entities\User\UserInterface;
 
 /**
  * Interface UserResponderInterface
- * @package houseapp\app\responders
+ * @package app\responders
  */
 interface UserResponderInterface
 {

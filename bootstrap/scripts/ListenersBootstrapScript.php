@@ -6,16 +6,16 @@
  * Time: 12:02
  */
 
-namespace houseapp\bootstrap\scripts;
+namespace bootstrap\scripts;
 
 
-use houseapp\listeners\test\Test;
+use listeners\test\Test;
 use housedi\ContainerInterface;
 
 
 /**
  * Class ListenersBootstrapScript
- * @package houseapp\bootstrap\scripts
+ * @package bootstrap\scripts
  */
 class ListenersBootstrapScript implements BootstrapScriptInterface
 {

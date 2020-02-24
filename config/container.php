@@ -6,17 +6,17 @@
  * Time: 12:22
  */
 
-namespace houseapp\config;
+namespace config;
 
-use houseapp\app\factories\UserFactory\UserFactory;
-use houseapp\app\factories\UserFactory\UserFactoryInterface;
-use houseapp\app\responders\UserResponder\UserResponder;
-use houseapp\app\responders\UserResponder\UserResponderInterface;
-use houseapp\app\services\Authentication\Authenticator\Factory\AuthenticatorFactory;
-use houseapp\app\services\Authentication\Authenticator\Factory\AuthenticatorFactoryInterface;
-use houseapp\app\services\Authentication\Authenticator\JWTAuthenticator;
-use houseapp\app\services\UserPasswordService\UserPasswordService;
-use houseapp\app\services\UserPasswordService\UserPasswordServiceInterface;
+use app\factories\UserFactory\UserFactory;
+use app\factories\UserFactory\UserFactoryInterface;
+use app\responders\UserResponder\UserResponder;
+use app\responders\UserResponder\UserResponderInterface;
+use app\services\Authentication\Authenticator\Factory\AuthenticatorFactory;
+use app\services\Authentication\Authenticator\Factory\AuthenticatorFactoryInterface;
+use app\services\Authentication\Authenticator\JWTAuthenticator;
+use app\services\UserPasswordService\UserPasswordService;
+use app\services\UserPasswordService\UserPasswordServiceInterface;
 use housedi\ContainerInterface;
 use houseframework\app\request\builder\RequestBuilder;
 use houseframework\app\request\builder\RequestBuilderInterface;

@@ -6,7 +6,7 @@
  * Time: 13:06
  */
 
-namespace houseapp\app\repositories\UserRepository;
+namespace app\repositories\UserRepository;
 
 
 use houseorm\mapper\DomainMapper;
@@ -14,7 +14,7 @@ use houseorm\mapper\DomainMapper;
 
 /**
  * Class UserRepository
- * @package houseapp\app\repositories\UserRepository
+ * @package app\repositories\UserRepository
  */
 class UserRepository extends DomainMapper implements UserRepositoryInterface
 {

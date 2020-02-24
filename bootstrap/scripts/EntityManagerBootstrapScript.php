@@ -6,11 +6,11 @@
  * Time: 11:43
  */
 
-namespace houseapp\bootstrap\scripts;
+namespace bootstrap\scripts;
 
 
-use houseapp\app\entities\User\User;
-use houseapp\app\repositories\UserRepository\UserRepository;
+use app\entities\User\User;
+use app\repositories\UserRepository\UserRepository;
 use housedi\ContainerInterface;
 use houseorm\Cache\Config\CacheConfig;
 use houseorm\config\Config;
@@ -20,7 +20,7 @@ use houseorm\EntityManager;
 
 /**
  * Class EntityManagerBootstrapScript
- * @package houseapp\bootstrap\scripts
+ * @package bootstrap\scripts
  */
 class EntityManagerBootstrapScript implements BootstrapScriptInterface
 {

@@ -6,12 +6,12 @@
  * Time: 11:08
  */
 
-namespace houseapp\app\services\Authentication\AuthenticationPayload;
+namespace app\services\Authentication\AuthenticationPayload;
 
 
 /**
  * Interface AuthenticationPayloadInterface
- * @package houseapp\app\services\Authentication\AuthenticationPayload
+ * @package app\services\Authentication\AuthenticationPayload
  */
 interface AuthenticationPayloadInterface
 {

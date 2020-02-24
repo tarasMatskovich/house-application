@@ -6,7 +6,7 @@
  * Time: 17:31
  */
 
-namespace houseapp\bootstrap\scripts;
+namespace bootstrap\scripts;
 
 
 use housedi\ContainerInterface;
@@ -22,7 +22,7 @@ use Thruway\Transport\PawlTransportProvider;
 
 /**
  * Class PublisherBootstrapScript
- * @package houseapp\bootstrap\scripts
+ * @package bootstrap\scripts
  */
 class PublisherBootstrapScript implements BootstrapScriptInterface
 {

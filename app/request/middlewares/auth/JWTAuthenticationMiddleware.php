@@ -6,15 +6,15 @@
  * Time: 11:26
  */
 
-namespace houseapp\app\request\middlewares\auth;
+namespace app\request\middlewares\auth;
 
 
-use houseapp\app\services\Authentication\Authenticator\AuthenticatorInterface;
+use app\services\Authentication\Authenticator\AuthenticatorInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class AuthenticationMiddleware
- * @package houseapp\app\request\middlewares\auth
+ * @package app\request\middlewares\auth
  */
 class JWTAuthenticationMiddleware implements AuthenticationMiddlewareInterface
 {

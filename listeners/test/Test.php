@@ -6,7 +6,7 @@
  * Time: 12:01
  */
 
-namespace houseapp\listeners\test;
+namespace listeners\test;
 
 
 use houseframework\listener\ListenerInterface;
@@ -14,7 +14,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class Test
- * @package houseapp\listeners\test
+ * @package listeners\test
  */
 class Test implements ListenerInterface
 {

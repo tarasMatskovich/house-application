@@ -6,12 +6,12 @@
  * Time: 13:03
  */
 
-namespace houseapp\app\entities\User;
+namespace app\entities\User;
 
 
 /**
  * Interface UserInterface
- * @package houseapp\app\entities
+ * @package app\entities
  */
 interface UserInterface
 {

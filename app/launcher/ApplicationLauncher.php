@@ -6,11 +6,11 @@
  * Time: 17:43
  */
 
-namespace houseapp\app\launcher;
+namespace app\launcher;
 
 
-use houseapp\bootstrap\bootstrapper\BootstrapperInterface;
-use houseapp\bootstrap\scripts\BootstrapScriptInterface;
+use bootstrap\bootstrapper\BootstrapperInterface;
+use bootstrap\scripts\BootstrapScriptInterface;
 use housedi\ContainerInterface;
 use houseframework\app\factory\ApplicationFactory;
 use houseframework\app\factory\ApplicationFactoryInterface;

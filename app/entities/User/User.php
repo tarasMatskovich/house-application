@@ -6,7 +6,7 @@
  * Time: 13:03
  */
 
-namespace houseapp\app\entities\User;
+namespace app\entities\User;
 
 
 use houseorm\mapper\annotations\Gateway;

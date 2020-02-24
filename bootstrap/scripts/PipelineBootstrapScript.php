@@ -6,13 +6,13 @@
  * Time: 12:42
  */
 
-namespace houseapp\bootstrap\scripts;
+namespace bootstrap\scripts;
 
 
-use houseapp\app\request\middlewares\auth\JWTAuthenticationMiddleware;
-use houseapp\app\request\middlewares\auth\factory\AuthenticationMiddlewareFactory;
-use houseapp\app\request\middlewares\auth\factory\AuthenticationMiddlewareFactoryInterface;
-use houseapp\app\services\Authentication\Authenticator\Factory\AuthenticatorFactoryInterface;
+use app\request\middlewares\auth\JWTAuthenticationMiddleware;
+use app\request\middlewares\auth\factory\AuthenticationMiddlewareFactory;
+use app\request\middlewares\auth\factory\AuthenticationMiddlewareFactoryInterface;
+use app\services\Authentication\Authenticator\Factory\AuthenticatorFactoryInterface;
 use housedi\ContainerInterface;
 use houseframework\app\config\ConfigInterface;
 use houseframework\app\request\pipeline\builder\PipelineBuilder;
@@ -21,7 +21,7 @@ use houseframework\app\request\pipeline\builder\PipelineBuilderInterface;
 
 /**
  * Class PipelineBootstrapScript
- * @package houseapp\bootstrap\scripts
+ * @package bootstrap\scripts
  */
 class PipelineBootstrapScript implements BootstrapScriptInterface
 {

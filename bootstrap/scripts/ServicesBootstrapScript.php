@@ -6,7 +6,7 @@
  * Time: 11:39
  */
 
-namespace houseapp\bootstrap\scripts;
+namespace bootstrap\scripts;
 
 
 use housedi\ContainerInterface;
@@ -14,7 +14,7 @@ use housedi\ContainerInterface;
 
 /**
  * Class ServicesBootstrapScript
- * @package houseapp\bootstrap\scripts
+ * @package bootstrap\scripts
  */
 class ServicesBootstrapScript implements BootstrapScriptInterface
 {

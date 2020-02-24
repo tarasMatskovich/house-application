@@ -6,7 +6,7 @@
  * Time: 17:43
  */
 
-namespace houseapp\app\launcher;
+namespace app\launcher;
 
 
 interface ApplicationLauncherInterface
