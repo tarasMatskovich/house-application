@@ -6,19 +6,19 @@
  * Time: 11:14
  */
 
-namespace houseapp\app\services\Authentication\Authenticator;
+namespace app\services\Authentication\Authenticator;
 
 
-use houseapp\app\entities\User\UserInterface;
-use houseapp\app\repositories\UserRepository\UserRepositoryInterface;
-use houseapp\app\services\Authentication\AuthenticationPayload\AuthenticationPayload;
-use houseapp\app\services\Authentication\AuthenticationPayload\AuthenticationPayloadInterface;
+use app\entities\User\UserInterface;
+use app\repositories\UserRepository\UserRepositoryInterface;
+use app\services\Authentication\AuthenticationPayload\AuthenticationPayload;
+use app\services\Authentication\AuthenticationPayload\AuthenticationPayloadInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 
 /**
  * Class JWTAuthenticator
- * @package houseapp\app\services\Authentication\Authenticator
+ * @package app\services\Authentication\Authenticator
  */
 class JWTAuthenticator implements AuthenticatorInterface
 {

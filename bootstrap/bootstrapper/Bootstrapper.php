@@ -6,19 +6,19 @@
  * Time: 11:15
  */
 
-namespace houseapp\bootstrap\bootstrapper;
+namespace bootstrap\bootstrapper;
 
 
-use houseapp\bootstrap\scripts\ActionsBootstrapScripts;
-use houseapp\bootstrap\scripts\EntityManagerBootstrapScript;
-use houseapp\bootstrap\scripts\ListenersBootstrapScript;
-use houseapp\bootstrap\scripts\PipelineBootstrapScript;
-use houseapp\bootstrap\scripts\PublisherBootstrapScript;
-use houseapp\bootstrap\scripts\ServicesBootstrapScript;
+use bootstrap\scripts\ActionsBootstrapScripts;
+use bootstrap\scripts\EntityManagerBootstrapScript;
+use bootstrap\scripts\ListenersBootstrapScript;
+use bootstrap\scripts\PipelineBootstrapScript;
+use bootstrap\scripts\PublisherBootstrapScript;
+use bootstrap\scripts\ServicesBootstrapScript;
 
 /**
  * Class Bootstrapper
- * @package houseapp\bootstrap\bootstrapper
+ * @package bootstrap\bootstrapper
  */
 class Bootstrapper implements BootstrapperInterface
 {

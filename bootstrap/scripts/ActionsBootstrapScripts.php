@@ -6,22 +6,22 @@
  * Time: 12:29
  */
 
-namespace houseapp\bootstrap\scripts;
+namespace bootstrap\scripts;
 
 
-use houseapp\actions\auth\signin\SignIn;
-use houseapp\actions\auth\signup\SignUp;
-use houseapp\actions\test\Test;
-use houseapp\app\factories\UserFactory\UserFactoryInterface;
-use houseapp\app\responders\UserResponder\UserResponderInterface;
-use houseapp\app\services\Authentication\Authenticator\Factory\AuthenticatorFactoryInterface;
-use houseapp\app\services\UserPasswordService\UserPasswordServiceInterface;
+use actions\auth\signin\SignIn;
+use actions\auth\signup\SignUp;
+use actions\test\Test;
+use app\factories\UserFactory\UserFactoryInterface;
+use app\responders\UserResponder\UserResponderInterface;
+use app\services\Authentication\Authenticator\Factory\AuthenticatorFactoryInterface;
+use app\services\UserPasswordService\UserPasswordServiceInterface;
 use housedi\ContainerInterface;
 
 
 /**
  * Class ActionsBootstrapScripts
- * @package houseapp\bootstrap\scripts
+ * @package bootstrap\scripts
  */
 class ActionsBootstrapScripts implements BootstrapScriptInterface
 {

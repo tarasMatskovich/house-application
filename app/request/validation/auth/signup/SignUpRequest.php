@@ -6,14 +6,14 @@
  * Time: 18:28
  */
 
-namespace houseapp\app\request\validation\auth\signup;
+namespace app\request\validation\auth\signup;
 
 
 use houseframework\app\request\ValidatedRequestMessage;
 
 /**
  * Class AuthRequest
- * @package houseapp\app\request\validation
+ * @package app\request\validation
  */
 class SignUpRequest extends ValidatedRequestMessage
 {

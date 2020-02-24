@@ -6,18 +6,18 @@
  * Time: 13:42
  */
 
-namespace houseapp\actions\auth\signup;
+namespace actions\auth\signup;
 
 
-use houseapp\app\factories\UserFactory\UserFactoryInterface;
-use houseapp\app\repositories\UserRepository\UserRepositoryInterface;
-use houseapp\app\request\validation\auth\signup\SignUpRequest;
-use houseapp\app\responders\UserResponder\UserResponderInterface;
+use app\factories\UserFactory\UserFactoryInterface;
+use app\repositories\UserRepository\UserRepositoryInterface;
+use app\request\validation\auth\signup\SignUpRequest;
+use app\responders\UserResponder\UserResponderInterface;
 use houseframework\action\ActionInterface;
 
 /**
  * Class SignUp
- * @package houseapp\actions\signup\SignUp
+ * @package actions\signup\SignUp
  */
 class SignUp implements ActionInterface
 {

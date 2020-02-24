@@ -6,14 +6,14 @@
  * Time: 12:32
  */
 
-namespace houseapp\app\multiprocess;
+namespace app\multiprocess;
 
 
 use React\Promise\PromiseInterface;
 
 /**
  * Interface ApplicationHostProcessInterface
- * @package houseapp\app\multiprocess
+ * @package app\multiprocess
  */
 interface ApplicationHostProcessInterface
 {

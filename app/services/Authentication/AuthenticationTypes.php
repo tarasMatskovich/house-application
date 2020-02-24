@@ -6,12 +6,12 @@
  * Time: 15:17
  */
 
-namespace houseapp\app\services\Authentication;
+namespace app\services\Authentication;
 
 
 /**
  * Class AuthenticationTypes
- * @package houseapp\app\services\Authentication
+ * @package app\services\Authentication
  */
 class AuthenticationTypes
 {

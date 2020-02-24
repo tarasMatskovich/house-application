@@ -6,14 +6,14 @@
  * Time: 17:42
  */
 
-namespace houseapp\app\logger;
+namespace app\logger;
 
 
 use Psr\Log\LoggerInterface;
 
 /**
  * Class DummyFileLogger
- * @package houseapp\app\logger
+ * @package app\logger
  */
 class DummyFileLogger implements LoggerInterface
 {

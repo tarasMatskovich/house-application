@@ -6,14 +6,14 @@
  * Time: 11:15
  */
 
-namespace houseapp\app\services\Authentication\Authenticator\Factory;
+namespace app\services\Authentication\Authenticator\Factory;
 
 
-use houseapp\app\services\Authentication\Authenticator\AuthenticatorInterface;
+use app\services\Authentication\Authenticator\AuthenticatorInterface;
 
 /**
  * Interface AuthenticatorFactoryInterface
- * @package houseapp\app\services\Authentication\Authenticator\Factory
+ * @package app\services\Authentication\Authenticator\Factory
  */
 interface AuthenticatorFactoryInterface
 {

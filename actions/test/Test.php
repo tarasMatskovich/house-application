@@ -6,7 +6,7 @@
  * Time: 12:28
  */
 
-namespace houseapp\actions\test;
+namespace actions\test;
 
 
 use houseframework\action\ActionInterface;
@@ -17,7 +17,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class Test
- * @package houseapp\actions\test
+ * @package actions\test
  */
 class Test implements ActionInterface
 {

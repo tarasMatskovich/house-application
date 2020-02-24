@@ -6,14 +6,14 @@
  * Time: 13:51
  */
 
-namespace houseapp\app\services\UserPasswordService;
+namespace app\services\UserPasswordService;
 
 
-use houseapp\app\entities\User\UserInterface;
+use app\entities\User\UserInterface;
 
 /**
  * Interface UserPasswordServiceInterface
- * @package houseapp\app\services\UserPasswordService
+ * @package app\services\UserPasswordService
  */
 interface UserPasswordServiceInterface
 {

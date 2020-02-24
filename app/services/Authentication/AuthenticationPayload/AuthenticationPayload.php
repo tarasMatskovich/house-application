@@ -6,12 +6,12 @@
  * Time: 11:09
  */
 
-namespace houseapp\app\services\Authentication\AuthenticationPayload;
+namespace app\services\Authentication\AuthenticationPayload;
 
 
 /**
  * Class AuthenticationPayload
- * @package houseapp\app\services\Authentication\AuthenticationPayload
+ * @package app\services\Authentication\AuthenticationPayload
  */
 class AuthenticationPayload implements AuthenticationPayloadInterface
 {

@@ -6,14 +6,14 @@
  * Time: 17:45
  */
 
-namespace houseapp\app\request\middlewares\auth;
+namespace app\request\middlewares\auth;
 
 
 use Throwable;
 
 /**
  * Class AuthenticationException
- * @package houseapp\app\request\middlewares\auth
+ * @package app\request\middlewares\auth
  */
 class AuthenticationException extends \Exception
 {

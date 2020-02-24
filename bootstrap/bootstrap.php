@@ -17,7 +17,7 @@ $routerFactory = new \houseframework\app\router\factory\RouterFactory($routes, $
 
 $containerDefinitions = require ROOT_DIRECTORY . '/config/container.php';
 $container = new \housedi\Container($containerDefinitions);
-$bootstrapper = new \houseapp\bootstrap\bootstrapper\Bootstrapper();
+$bootstrapper = new \bootstrap\bootstrapper\Bootstrapper();
 
 $configParams = require  ROOT_DIRECTORY . '/config/config.php';
 $config = new \houseframework\app\config\Config($configParams);

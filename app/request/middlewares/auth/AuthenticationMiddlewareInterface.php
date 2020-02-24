@@ -6,14 +6,14 @@
  * Time: 14:49
  */
 
-namespace houseapp\app\request\middlewares\auth;
+namespace app\request\middlewares\auth;
 
 
 use houseframework\app\request\middleware\MiddlewareInterface;
 
 /**
  * Interface AuthenticationMiddlewareInterface
- * @package houseapp\app\request\middlewares\auth
+ * @package app\request\middlewares\auth
  */
 interface AuthenticationMiddlewareInterface extends MiddlewareInterface
 {

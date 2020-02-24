@@ -6,15 +6,15 @@
  * Time: 14:55
  */
 
-namespace houseapp\app\factories\UserFactory;
+namespace app\factories\UserFactory;
 
 
-use houseapp\app\entities\User\UserInterface;
+use app\entities\User\UserInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Interface UserFactoryInterface
- * @package houseapp\app\factories\UserFactory
+ * @package app\factories\UserFactory
  */
 interface UserFactoryInterface
 {

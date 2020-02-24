@@ -1,7 +1,7 @@
 <?php
 
 use WyriHaximus\React\ChildProcess\Pool\Options;
-use \houseapp\app\launcher\MultiProcessApplicationLauncher;
+use \app\launcher\MultiProcessApplicationLauncher;
 
 require './vendor/autoload.php';
 

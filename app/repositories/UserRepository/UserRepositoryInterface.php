@@ -6,15 +6,15 @@
  * Time: 13:06
  */
 
-namespace houseapp\app\repositories\UserRepository;
+namespace app\repositories\UserRepository;
 
 
-use houseapp\app\entities\User\UserInterface;
+use app\entities\User\UserInterface;
 use houseorm\mapper\DomainMapperInterface;
 
 /**
  * Interface UserRepositoryInterface
- * @package houseapp\app\repositories\UserRepository
+ * @package app\repositories\UserRepository
  */
 interface UserRepositoryInterface extends DomainMapperInterface
 {

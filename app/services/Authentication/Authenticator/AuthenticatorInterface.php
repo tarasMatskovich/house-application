@@ -6,16 +6,16 @@
  * Time: 11:12
  */
 
-namespace houseapp\app\services\Authentication\Authenticator;
+namespace app\services\Authentication\Authenticator;
 
 
-use houseapp\app\entities\User\UserInterface;
-use houseapp\app\services\Authentication\AuthenticationPayload\AuthenticationPayloadInterface;
+use app\entities\User\UserInterface;
+use app\services\Authentication\AuthenticationPayload\AuthenticationPayloadInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Interface AuthenticatorInterface
- * @package houseapp\app\services\Authentication\Authenticator
+ * @package app\services\Authentication\Authenticator
  */
 interface AuthenticatorInterface
 {

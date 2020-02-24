@@ -6,11 +6,11 @@
  * Time: 12:38
  */
 
-namespace houseapp\app\multiprocess;
+namespace app\multiprocess;
 
 
-use houseapp\bootstrap\bootstrapper\Bootstrapper;
-use houseapp\bootstrap\scripts\BootstrapScriptInterface;
+use bootstrap\bootstrapper\Bootstrapper;
+use bootstrap\scripts\BootstrapScriptInterface;
 use housedi\Container;
 use houseframework\app\config\Config;
 use houseframework\app\process\app\SubProcessApplication;
@@ -25,7 +25,7 @@ use WyriHaximus\React\ChildProcess\Messenger\Messenger;
 
 /**
  * Class ApplicationSubProcess
- * @package houseapp\app\multiprocess
+ * @package app\multiprocess
  */
 class ApplicationSubProcess implements ChildInterface
 {

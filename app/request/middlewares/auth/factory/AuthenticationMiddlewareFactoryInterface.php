@@ -6,14 +6,14 @@
  * Time: 14:47
  */
 
-namespace houseapp\app\request\middlewares\auth\factory;
+namespace app\request\middlewares\auth\factory;
 
 
-use houseapp\app\request\middlewares\auth\AuthenticationMiddlewareInterface;
+use app\request\middlewares\auth\AuthenticationMiddlewareInterface;
 
 /**
  * Interface AuthenticationMiddlewareFactoryInterface
- * @package houseapp\app\request\middlewares\auth\factory
+ * @package app\request\middlewares\auth\factory
  */
 interface AuthenticationMiddlewareFactoryInterface
 {

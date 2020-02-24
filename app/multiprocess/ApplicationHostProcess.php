@@ -6,7 +6,7 @@
  * Time: 12:33
  */
 
-namespace houseapp\app\multiprocess;
+namespace app\multiprocess;
 
 
 use houseframework\app\config\ConfigInterface;
@@ -25,7 +25,7 @@ use WyriHaximus\React\ChildProcess\Pool\WorkerInterface;
 
 /**
  * Class ApplicationHostProcess
- * @package houseapp\app\multiprocess
+ * @package app\multiprocess
  */
 class ApplicationHostProcess implements ApplicationHostProcessInterface
 {

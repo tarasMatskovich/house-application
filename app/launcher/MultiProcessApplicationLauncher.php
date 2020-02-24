@@ -6,11 +6,11 @@
  * Time: 14:51
  */
 
-namespace houseapp\app\launcher;
+namespace app\launcher;
 
 
-use houseapp\app\multiprocess\ApplicationHostProcess;
-use houseapp\app\multiprocess\ApplicationSubProcess;
+use app\multiprocess\ApplicationHostProcess;
+use app\multiprocess\ApplicationSubProcess;
 use houseframework\app\config\ConfigInterface;
 use houseframework\app\eventlistener\EventListenerInterface;
 use houseframework\app\router\factory\RouterFactoryInterface;
@@ -20,7 +20,7 @@ use WyriHaximus\React\ChildProcess\Pool\PoolInterface;
 
 /**
  * Class MultiProcessApplicationLauncher
- * @package houseapp\app\launcher
+ * @package app\launcher
  */
 class MultiProcessApplicationLauncher implements ApplicationLauncherInterface
 {

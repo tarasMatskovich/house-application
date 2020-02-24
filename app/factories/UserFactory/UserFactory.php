@@ -6,18 +6,18 @@
  * Time: 14:56
  */
 
-namespace houseapp\app\factories\UserFactory;
+namespace app\factories\UserFactory;
 
 
-use houseapp\app\entities\User\User;
-use houseapp\app\entities\User\UserInterface;
-use houseapp\app\repositories\UserRepository\UserRepositoryInterface;
-use houseapp\app\services\UserPasswordService\UserPasswordServiceInterface;
+use app\entities\User\User;
+use app\entities\User\UserInterface;
+use app\repositories\UserRepository\UserRepositoryInterface;
+use app\services\UserPasswordService\UserPasswordServiceInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class UserFactory
- * @package houseapp\app\factories\UserFactory
+ * @package app\factories\UserFactory
  */
 class UserFactory implements UserFactoryInterface
 {
